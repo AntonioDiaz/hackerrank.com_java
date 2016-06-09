@@ -1,4 +1,4 @@
-package easy;
+package moderate;
 
 import java.io.File;
 import java.io.InputStream;
