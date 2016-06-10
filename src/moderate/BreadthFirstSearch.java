@@ -20,7 +20,7 @@ public class BreadthFirstSearch {
 		properties.load(input);
 		File file = new File(properties.getProperty("input.path") + "breadth_first_search_02.txt");
 		Scanner in = new Scanner(file);
-		//Scanner in = new Scanner(System.in);
+		// Scanner in = new Scanner(System.in);
 		int t = in.nextInt();
 		for (int i = 0; i < t; i++) {
 			int nodesCount = in.nextInt();
@@ -33,70 +33,52 @@ public class BreadthFirstSearch {
 				addEdgeGraph(graph, y, x);
 			}
 			int startNode = in.nextInt();
-			//Map<Integer, Integer> nodesVisited = new HashMap<Integer, Integer>();
+			// Map<Integer, Integer> nodesVisited = new HashMap<Integer, Integer>();
 			List<Integer> queue = new ArrayList<Integer>();
 			Map<Integer, Integer> visited = new HashMap<Integer, Integer>();
-			visited.put(startNode, 0);
+			Map<Integer, Integer> parents = new HashMap<Integer, Integer>();
+			// visited.put(startNode, 0);
 			queue.add(startNode);
-			Integer step = 1;
-			travelGraphBreadth(graph, queue, visited, step);
-			System.out.println(step);
-			System.out.println(visited);
-			/*
-			for (int j = 1; j <= nodesCount; j++) {
-				if (j!=startNode) {
-					if (nodesVisited.containsKey(j)) {
-						System.out.print(nodesVisited.get(j) + " ");
-					} else {
-						System.out.print(-1 + " ");
+			while (queue.size() > 0) {
+				Integer node = queue.get(0);
+				queue.remove(0);
+				/* getting parent distance */
+				int distance = 0;
+				if (parents.containsKey(node)) {
+					distance = visited.get(parents.get(node)) + 1;
+				}
+				visited.put(node, distance);
+				Set<Integer> children = graph.get(node);
+				if (children != null) {
+					for (Integer son : children) {
+						if (!visited.containsKey(son) && !queue.contains(son)) {
+							parents.put(son, node);
+							queue.add(son);
+						}
 					}
 				}
 			}
+			for (int j = 1; j <= nodesCount; j++) { 
+				if (j!=startNode) { 
+					if (visited.containsKey(j)) { 
+						System.out.print(visited.get(j) * 6 + " "); 
+					} else { 
+						System.out.print(-1 + " "); 
+					} 
+				} 
+			}
 			System.out.println();
-			*/
 		}
 		in.close();
 	}
-	
+
 	private static void addEdgeGraph(Map<Integer, Set<Integer>> graph, int x, int y) {
-		if (graph.get(x)!=null) {
-			graph.get(x).add(y);				
+		if (graph.get(x) != null) {
+			graph.get(x).add(y);
 		} else {
 			Set<Integer> children = new HashSet<Integer>();
 			children.add(y);
 			graph.put(x, children);
 		}
 	}
-
-	/** */
-	public static void travelGraphDeph (Map<Integer, Set<Integer>> graph, int startNode, Map<Integer, Integer> nodesVisited, Integer steps) {
-		nodesVisited.put(startNode, steps * 6);
-		Set<Integer> children = graph.get(startNode);
-		for (Integer child : children) {
-			if (!nodesVisited.containsKey(child)) {
-				travelGraphDeph(graph, child, nodesVisited, steps + 1);
-			}
-		}
-	}	
-	/** */
-	public static void travelGraphBreadth (Map<Integer, Set<Integer>> graph, List<Integer> queue, Map<Integer, Integer> visited, Integer step) {
-		if (queue.size()>0) {
-			Integer node = queue.get(0);
-			queue.remove(0);
-			Set<Integer> children = graph.get(node);
-			System.out.println(node + " step before " + step);
-			if (children!=null) {
-				for (Integer child : children) {					
-					if (!visited.containsKey(child)) {
-						visited.put(child, step);
-						queue.add(child);
-					}
-				}
-			}
-			System.out.println(queue);
-			Integer newStep = new Integer (step + 1);
-			BreadthFirstSearch.travelGraphBreadth(graph, queue, visited, newStep);
-			System.out.println(node + " step after " + step);
-		}
-	}	
 }
