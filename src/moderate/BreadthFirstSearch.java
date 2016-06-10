@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.Set;
 
 public class BreadthFirstSearch {
 
@@ -23,7 +25,7 @@ public class BreadthFirstSearch {
 		for (int i = 0; i < t; i++) {
 			int nodesCount = in.nextInt();
 			int edgesCount = in.nextInt();
-			Map<Integer, List<Integer>> graph = new HashMap<Integer, List<Integer>>();
+			Map<Integer, Set<Integer>> graph = new HashMap<Integer, Set<Integer>>();
 			for (int j = 0; j < edgesCount; j++) {
 				int x = in.nextInt();
 				int y = in.nextInt();
@@ -47,11 +49,11 @@ public class BreadthFirstSearch {
 		in.close();
 	}
 	
-	private static void addEdgeGraph(Map<Integer, List<Integer>> graph, int x, int y) {
+	private static void addEdgeGraph(Map<Integer, Set<Integer>> graph, int x, int y) {
 		if (graph.get(x)!=null) {
 			graph.get(x).add(y);				
 		} else {
-			List<Integer> children = new ArrayList<Integer>();
+			Set<Integer> children = new HashSet<Integer>();
 			children.add(y);
 			graph.put(x, children);
 		}
@@ -59,9 +61,9 @@ public class BreadthFirstSearch {
 
 	/**
 	 * @param nodesVisited   */
-	public static void travelGraph (Map<Integer, List<Integer>> graph, int startNode, Map<Integer, Integer> nodesVisited, Integer steps) {
+	public static void travelGraph (Map<Integer, Set<Integer>> graph, int startNode, Map<Integer, Integer> nodesVisited, Integer steps) {
 		nodesVisited.put(startNode, steps * 6);
-		List<Integer> children = graph.get(startNode);
+		Set<Integer> children = graph.get(startNode);
 		for (Integer child : children) {
 			if (!nodesVisited.containsKey(child)) {
 				travelGraph(graph, child, nodesVisited, steps + 1);
