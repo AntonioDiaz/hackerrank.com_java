@@ -34,12 +34,12 @@ public class BreadthFirstSearch {
 			Map<Integer, Integer> nodesVisited = new HashMap<Integer, Integer>();
 			travelGraph (graph, startNode, nodesVisited, 0);
 			for (int j = 1; j <= nodesCount; j++) {
-				if (nodesVisited.containsKey(j)) {
-					if (nodesVisited.get(j)!=0) {
+				if (j!=startNode) {
+					if (nodesVisited.containsKey(j)) {
 						System.out.print(nodesVisited.get(j) + " ");
+					} else {
+						System.out.print(-1 + " ");
 					}
-				} else {
-					System.out.print(-1 + " ");
 				}
 			}
 			System.out.println();
