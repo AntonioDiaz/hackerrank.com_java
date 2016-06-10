@@ -38,8 +38,32 @@ public class BreadthFirstSearch {
 				}				
 			}
 			int startNode = in.nextInt();
-			System.out.println(startNode);
+			Map<Integer, Integer> nodesVisited = new HashMap<Integer, Integer>();
+			travelGraph (graph, startNode, nodesVisited, 0);
+			for (int j = 1; j <= nodesCount; j++) {
+				if (nodesVisited.containsKey(j)) {
+					if (nodesVisited.get(j)!=0) {
+						System.out.print(nodesVisited.get(j) + " ");
+					}
+				} else {
+					System.out.print(-1 + " ");
+				}
+			}
+			System.out.println();
 		}
 		in.close();
 	}
+	
+	/**
+	 * @param nodesVisited   */
+	public static void travelGraph (Map<Integer, List<Integer>> graph, int startNode, Map<Integer, Integer> nodesVisited, Integer steps) {
+		nodesVisited.put(startNode, steps * 6);
+		List<Integer> children = graph.get(startNode);
+		for (Integer child : children) {
+			if (!nodesVisited.containsKey(child)) {
+				travelGraph(graph, child, nodesVisited, steps + 1);
+			}
+		}
+	}
+	
 }
