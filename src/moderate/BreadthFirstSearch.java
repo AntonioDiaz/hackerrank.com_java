@@ -18,24 +18,17 @@ public class BreadthFirstSearch {
 		properties.load(input);
 		File file = new File(properties.getProperty("input.path") + "breadth_first_search.txt");
 		Scanner in = new Scanner(file);
+		//Scanner in = new Scanner(System.in);
 		int t = in.nextInt();
 		for (int i = 0; i < t; i++) {
 			int nodesCount = in.nextInt();
 			int edgesCount = in.nextInt();
 			Map<Integer, List<Integer>> graph = new HashMap<Integer, List<Integer>>();
 			for (int j = 0; j < edgesCount; j++) {
-				int from = in.nextInt();
-				int to = in.nextInt();
-				if (graph.get(from)!=null) {
-					graph.get(from).add(to);				
-				} else {
-					List<Integer> children = new ArrayList<Integer>();
-					children.add(to);
-					graph.put(from, children);
-				}
-				if (graph.get(to)==null) {
-					graph.put(to, new ArrayList<Integer>());
-				}				
+				int x = in.nextInt();
+				int y = in.nextInt();
+				addEdgeGraph(graph, x, y);
+				addEdgeGraph(graph, y, x);
 			}
 			int startNode = in.nextInt();
 			Map<Integer, Integer> nodesVisited = new HashMap<Integer, Integer>();
@@ -54,6 +47,16 @@ public class BreadthFirstSearch {
 		in.close();
 	}
 	
+	private static void addEdgeGraph(Map<Integer, List<Integer>> graph, int x, int y) {
+		if (graph.get(x)!=null) {
+			graph.get(x).add(y);				
+		} else {
+			List<Integer> children = new ArrayList<Integer>();
+			children.add(y);
+			graph.put(x, children);
+		}
+	}
+
 	/**
 	 * @param nodesVisited   */
 	public static void travelGraph (Map<Integer, List<Integer>> graph, int startNode, Map<Integer, Integer> nodesVisited, Integer steps) {
@@ -64,6 +67,5 @@ public class BreadthFirstSearch {
 				travelGraph(graph, child, nodesVisited, steps + 1);
 			}
 		}
-	}
-	
+	}	
 }
