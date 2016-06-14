@@ -9,12 +9,10 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
-import moderate.BreadthFirstSearch;
-
 public class MarkAndToys {
 
 	public static void main(String[] args) throws IOException {
-		InputStream input = BreadthFirstSearch.class.getClassLoader().getResourceAsStream("config.properties");
+		InputStream input = MarkAndToys.class.getClassLoader().getResourceAsStream("config.properties");
 		Properties properties = new Properties();
 		properties.load(input);
 		File file = new File(properties.getProperty("input.path") + "mark_and_toys.txt");
