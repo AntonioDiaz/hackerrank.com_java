@@ -23,7 +23,9 @@ public class CircularArrayRotation {
 		}
 		for (int i = 0; i < q; i++) {
 			int m = in.nextInt();
-			int position = (m + (k%n)) % n;
+			//int position = (m + (k%n)) % n;
+			int position = (m - (k%n) + n) %n;
+			//System.out.println(position);
 			System.out.println(array[position]);
 		}
 		in.close();
