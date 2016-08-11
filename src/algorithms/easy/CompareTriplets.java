@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class CompareTriplets {
 
 	public static void main(String[] args) throws IOException {
-		InputStream input = ClosestNumbers.class.getClassLoader().getResourceAsStream("config.properties");
+		InputStream input = CompareTriplets.class.getClassLoader().getResourceAsStream("config.properties");
 		Properties properties = new Properties();
 		properties.load(input);
 		File file = new File(properties.getProperty("input.path") + "compare_triplets.txt");
