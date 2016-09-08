@@ -1,4 +1,4 @@
-package algorithms.moderate;
+package algorithms.medium;
 
 import java.io.File;
 import java.io.InputStream;
