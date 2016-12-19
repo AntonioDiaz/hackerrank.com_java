@@ -4,8 +4,13 @@ package algorithms.strings.easy;
  * @author antonio.diaz
  */
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Scanner;
+import java.util.Set;
 
 public class StringConstruction {
 	public static void main(String[] args) throws IOException {
@@ -25,27 +30,14 @@ public class StringConstruction {
 	}
 
 	private static int calculateCost(String oldStr) {
-		String newStr = "";
 		int dolarsNeeded = 0;
-		int position = 0;
-		while (!oldStr.equals(newStr)) {
-			/* calculate maximun substring of the remainig oldStr found in newStr. */
-			String maxSubstring = "";
-			int subLength = newStr.length();
-			while (subLength - position > 0 && maxSubstring.length()==0) {
-				String substring = oldStr.substring(position, subLength);
-				if (newStr.contains(substring)) {
-					maxSubstring = substring;
-				}
-				subLength--;
-			}
-			if (maxSubstring.length() == 0) {
-				newStr += oldStr.charAt(position);
+		Set<Character> setCharacters = new HashSet<Character>();
+		for (int i = 0; i < oldStr.length(); i++) {
+			Character c = oldStr.charAt(i);
+			if (!setCharacters.contains(c)) {
+				setCharacters.add(c);
 				dolarsNeeded++;
-			} else {
-				newStr += maxSubstring;
 			}
-			position = newStr.length();
 		}
 		return dolarsNeeded;
 	}
