@@ -2,6 +2,7 @@ package algorithmos.strings.easy;
 
 import org.junit.Test;
 
+import algorithms.strings.easy.SuperReducedString;
 import static org.junit.Assert.*;
 
 public class SuperReducedStringTest {
