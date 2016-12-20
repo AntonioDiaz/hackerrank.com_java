@@ -1,4 +1,4 @@
-package algorithmos.strings.easy;
+package algorithms.strings.easy;
 
 import org.junit.Test;
 
