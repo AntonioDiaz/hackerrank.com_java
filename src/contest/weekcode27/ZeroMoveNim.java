@@ -36,9 +36,8 @@ public class ZeroMoveNim {
 	 * 
 	 * @param piles
 	 * @return */
-	public static boolean calculateIfFirstWins(List<BigInteger> piles) {
-		System.out.println(piles);
-		return false;
+	public static Boolean calculateIfFirstWins(List<BigInteger> piles) {
+		Boolean firstWins = null; 
+		return firstWins;
 	}
-
 }

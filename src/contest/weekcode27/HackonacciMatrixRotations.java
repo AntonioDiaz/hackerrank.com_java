@@ -32,26 +32,22 @@ public class HackonacciMatrixRotations {
 		map.put(6, true);
 		map.put(0, true);
 		int[] possibleResults = new int[4];
-		possibleResults[0] = 0;
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= n; j++) {
 				BigInteger bigInteger = BigInteger.valueOf(i).multiply(BigInteger.valueOf(j));
 				bigInteger = bigInteger.pow(2);
 				bigInteger = bigInteger.mod(BigInteger.valueOf(7));
 				int valueMod7 = bigInteger.intValue();
-				for (int k = 1; k <= 3; k++) {
+				for (int k = 1; k <= 2; k++) {
 					int iNew = 0;
 					int jNew = 0;
-					if (k == 3) {
-						iNew = n - i + 1;
-						jNew = j;
+					if (k == 1) {
+						iNew = j;
+						jNew = n - i + 1;
 					} else if (k == 2) {
 						iNew = n - i + 1;
 						jNew = n - j + 1;
-					} else if (k == 1) {
-						iNew = j;
-						jNew = n - i + 1;
-					}
+					} 
 					BigInteger bigIntegerRotation = BigInteger.valueOf(iNew).multiply(BigInteger.valueOf(jNew));
 					bigIntegerRotation = bigIntegerRotation.pow(2);
 					bigIntegerRotation = bigIntegerRotation.mod(BigInteger.valueOf(7));
@@ -63,6 +59,8 @@ public class HackonacciMatrixRotations {
 				}
 			}
 		}
+		possibleResults[0] = 0;
+		possibleResults[3] = possibleResults[1];		
 		for (int i = 0; i < q; i++) {
 			int rotationsSimplified = (in.nextInt() / 90) % 4;
 			System.out.println(possibleResults[rotationsSimplified]);
