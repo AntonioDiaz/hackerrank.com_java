@@ -26,18 +26,39 @@ public class ZeroMoveNim {
 			for (int j = 0; j < pilesNum; j++) {
 				piles.add(new BigInteger(in.next()));
 			}
-			boolean firstWins = ZeroMoveNim.calculateIfFirstWins(piles);
-			System.out.println(firstWins ? "W" : "L");
+			Boolean firstWins = ZeroMoveNim.calculateIfFirstWins(piles);
+			if (firstWins!=null) {
+				System.out.println(firstWins ? "W" : "L");
+			}
 		}
 		in.close();
 	}
 
-	/** Nim Game: calculate if the first player can win the game.
-	 * 
+	/** 
+	 * Nim Game: calculate if the first player can win the game.
 	 * @param piles
-	 * @return */
+	 * @return 
+	 * */
 	public static Boolean calculateIfFirstWins(List<BigInteger> piles) {
-		Boolean firstWins = null; 
+		Boolean firstWins = null;
+		/* calculate smallest pile. */
+		BigInteger smallestPile = piles.get(0);
+		for (BigInteger bigInteger : piles) {
+			if (bigInteger.compareTo(smallestPile)<0) {
+				smallestPile = bigInteger;
+			}
+		}
+		/* calculate how many has the smallest value. */
+		int countSmallestPiles = 0;
+		for (BigInteger bigInteger : piles) {
+			if (smallestPile.equals(bigInteger)) {
+				countSmallestPiles++;
+			}
+		}
+		int countPilesBiger = piles.size() - countSmallestPiles;
+		if (countPilesBiger%2==0) {
+			
+		}
 		return firstWins;
 	}
 }
