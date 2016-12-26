@@ -1,0 +1,9 @@
+/target/
+/bin/
+/.project
+/.classpath
+/.settings/
+/.metadata/
+/RemoteSystemsTempFiles/
+/build/
+/scr/config.properties
