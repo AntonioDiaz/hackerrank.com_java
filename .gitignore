@@ -4,6 +4,9 @@
 /.classpath
 /.settings/
 /.metadata/
+/.idea/
+hackerrank.iml
+/out
 /RemoteSystemsTempFiles/
 /build/
 /scr/config.properties
