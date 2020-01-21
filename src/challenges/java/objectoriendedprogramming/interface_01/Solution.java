@@ -1,4 +1,4 @@
-package challenges.java.objectoriendedprogramming.interfaceexample;
+package challenges.java.objectoriendedprogramming.interface_01;
 
 import java.util.Scanner;
 
