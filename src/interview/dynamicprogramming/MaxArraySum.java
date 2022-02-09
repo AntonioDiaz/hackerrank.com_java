@@ -2,7 +2,8 @@ package interview.dynamicprogramming;
 
 //https://www.hackerrank.com/challenges/max-array-sum
 
-import javafx.util.Pair;
+
+import utils.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;

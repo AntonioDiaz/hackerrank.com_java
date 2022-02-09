@@ -2,7 +2,8 @@ package interview.search;
 
 //https://www.hackerrank.com/challenges/ctci-ice-cream-parlor/
 
-import javafx.util.Pair;
+
+import utils.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;

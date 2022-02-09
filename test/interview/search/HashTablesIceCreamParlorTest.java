@@ -1,7 +1,7 @@
 package interview.search;
 
-import javafx.util.Pair;
 import org.junit.Test;
+import utils.Pair;
 
 import java.io.File;
 import java.io.FileNotFoundException;
