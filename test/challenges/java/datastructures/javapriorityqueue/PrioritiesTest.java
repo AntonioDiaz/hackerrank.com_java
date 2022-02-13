@@ -18,7 +18,7 @@ public class PrioritiesTest {
     @Before
     public void init() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("java_priority_queue_01.txt").getFile());
+        File file = new File(classLoader.getResource("input/java_priority_queue_01.txt").getFile());
         System.out.println(file.getAbsolutePath());
         Scanner in = new Scanner(file);
         in.nextLine();

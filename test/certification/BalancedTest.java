@@ -12,7 +12,7 @@ public class BalancedTest {
 
     @Test
     public void balanced02() {
-        Assert.assertTrue (Balanced.isBalanced("(())()"));
+        Assert.assertFalse (Balanced.isBalanced("(())()"));
     }
 
     @Test

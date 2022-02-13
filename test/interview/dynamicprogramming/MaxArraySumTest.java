@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -34,12 +35,10 @@ public class MaxArraySumTest {
     @Test
     public void maxSubsetSum_04() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("max_array_sum_01.txt").getFile());
+        File file = new File(Objects.requireNonNull(classLoader.getResource("input/max_array_sum_01.txt")).getFile());
         Scanner in = new Scanner(file);
         in.nextLine();
         int[] s = Arrays.stream(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-
-        assertEquals(15, MaxArraySum.maxSubsetSum(s));
+        assertEquals(151598486, MaxArraySum.maxSubsetSum(s));
     }
-
 }

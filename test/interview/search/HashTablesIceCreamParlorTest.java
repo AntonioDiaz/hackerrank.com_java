@@ -34,7 +34,7 @@ public class HashTablesIceCreamParlorTest {
     public void whatFlavorsTest_03() throws FileNotFoundException {
         ClassLoader classLoader = getClass().getClassLoader();
         List<Pair<Integer, Integer>> solutionsPairs = getSolutions();
-        File file = new File(classLoader.getResource("hash_tables_ice_cream_parlor_input.txt").getFile());
+        File file = new File(classLoader.getResource("input/hash_tables_ice_cream_parlor_input.txt").getFile());
         Scanner in = new Scanner(file);
         int testNum = in.nextInt();
         assertEquals(34, testNum);
@@ -52,7 +52,7 @@ public class HashTablesIceCreamParlorTest {
     private List<Pair<Integer, Integer>> getSolutions() throws FileNotFoundException {
         List<Pair<Integer, Integer>> solutions = new ArrayList<>();
         ClassLoader classLoader = getClass().getClassLoader();
-        File fileSolutions = new File(classLoader.getResource("hash_tables_ice_cream_parlor_solution.txt").getFile());
+        File fileSolutions = new File(classLoader.getResource("input/hash_tables_ice_cream_parlor_solution.txt").getFile());
         Scanner in = new Scanner(fileSolutions);
         while (in.hasNextLine()) {
             String myLine = in.nextLine();
