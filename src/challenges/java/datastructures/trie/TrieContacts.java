@@ -1,4 +1,4 @@
-package challenges.java.datastructures;
+package challenges.java.datastructures.trie;
 
 
 import java.util.ArrayList;
@@ -8,10 +8,10 @@ import java.util.Map;
 
 //https://www.hackerrank.com/challenges/contacts/problem
 
-class Result {
+class TrieContacts {
   static class Node {
     int cont = 1;
-    Map <Character, Result.Node> edges = new HashMap<>();
+    Map <Character, TrieContacts.Node> edges = new HashMap<>();
   }
   public static List<Integer> contacts(List<List<String>> queries) {
     List<Integer> results = new ArrayList<>();
@@ -58,8 +58,4 @@ class Result {
     }
     return root;
   }
-}
-
-public class TrieContacts {
-
 }
